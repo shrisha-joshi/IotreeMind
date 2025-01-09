@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <title>Algo Achievers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .h-screen {
+            min-height: 100vh;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        /* Mobile Header Section */
+        .mobile-header {
+            height: 40vh;
+            background: linear-gradient(to left, #020065, #0400CB);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .mobile-header img {
+            width: 50%;
+            height: auto;
+            padding: 0.75rem;
+            margin-top: 2.5rem;
+        }
+
+        .mobile-header h1 {
+            color: white;
+            text-align: center;
+        }
+
+        .welcome-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 0.5rem;
+        }
+
+        .app-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            padding-bottom: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Main Content Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            background: white;
+            height: 100%;
+        }
+
+        /* Form Section */
+        .form-section {
+            grid-column: span 12;
+            width: 100%;
+            padding: 0 1.25rem;
+        }
+
+        .login-title {
+            color: #020065;
+            font-size: 1.875rem;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 2.5rem;
+            display: none;
+        }
+
+        .form-container {
+            margin-top: 2.5rem;
+            background-color: #f5f5f5;
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        .form-label {
+            color: #000094;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #020065;
+            font-weight: 700;
+        }
+
+        .input-container {
+            margin-top: 1.5rem;
+            position: relative;
+  display: inline-block; /* Or block if you want it to take full width */
+        }
+
+        .phone-input {
+            width: 130%;
+            padding: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            font-size: 1rem;
+            padding-left: 40px;
+            background-color: transparent;
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+            padding-left: 40px; /* Make space for the prefix */
+        }
+
+        .input-container .prefix {
+            position: absolute;
+            left: 15px;
+            top: 20%;
+            transform: translateY(-50%);
+            color: #181717; /* Or any other color */
+          }
+          
+          .input-container .label {
+              position: absolute;
+              top: -10px; /* Adjust as needed */
+              left: 10px;
+              background-color: white;
+              padding: 0 5px; /* Add some padding to avoid label being cutted */
+              font-size: 12px;
+              color: #777;
+          }
+
+        .submit-button {
+            width:  130%;
+            padding: 1rem;
+            margin-top: 1.25rem;
+            background: linear-gradient(to left, #020065, #0400CB);
+            color: white;
+            border: none;
+            border-radius: 9999px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Desktop Sidebar */
+        .sidebar-image {
+            display: none;
+            background: linear-gradient(to left, #020065, #0400CB);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar-image .background-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.1;
+        }
+
+        .sidebar-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .logo-container {
+            width: 250px;
+            margin-bottom: 2rem;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Mobile Bottom Image */
+        .mobile-bottom-image {
+            grid-column: span 12;
+            width: 100%;
+            height: 100%;
+        }
+
+        .mobile-bottom-image img {
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            object-fit: contain;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-header {
+                display: none;
+            }
+
+            .form-section {
+                grid-column: span 6;
+                order: 2;
+                padding: 8.5rem;
+                
+                
+            }
+
+            .login-title {
+                display: block;
+            }
+
+            .sidebar-image {
+                display: block;
+                grid-column: span 6;
+                order: 1;
+                position: relative;
+                max-height: 100vh;
+                overflow: hidden;
+            }
+
+            .sidebar-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .sidebar-content {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                text-align: center;
+            }
+
+            .mobile-bottom-image {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="h-screen flex flex-col">
+        <!-- Mobile Header -->
+        <div class="mobile-header">
+            <img src="Winners-Paradise-logo-ARTWORK-2-04-e1718351259670 1.png" alt="Logo">
+            <h1 class="welcome-text">Welcome to</h1>
+            <h1 class="app-name">Algo Achievers</h1>
+        </div>
+
+        <!-- Main Content -->
+        <div class="grid">
+            <!-- Form Section -->
+            <div class="form-section">
+                <h1 class="login-title">LOGIN</h1>
+                
+                <!-- Language Selection -->
+                <div class="form-container">
+                    <p class="form-label">Select preferred language</p>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="language" value="English" checked>
+                            <span>English</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="language" value="Kannada">
+                            <span>ಕನ್ನಡ</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Login Form -->
+                <div class="form-container">
+                    <p class="form-label">Login/Register to continue</p>
+                    <div class="input-container">
+                        <span class="label">Phone Number</span>
+                        <span class="prefix">+91</span>
+                        <input type="tel" class="phone-input" >
+                        <button class="submit-button">Get OTP</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop Sidebar -->
+            <div class="sidebar-image">
+                <img src="robo 3.png" alt="Background" class="background-img">
+                <div class="sidebar-content">
+                    <div class="logo-container">
+                        <img src="Winners-Paradise-logo-ARTWORK-2-04-e1718351259670 1.png" alt="Logo">
+                    </div>
+                    <h1 class="welcome-text">Welcome to</h1>
+                    <h1 class="app-name">Algo Achievers</h1>
+                </div>
+            </div>
+
+            <!-- Mobile Bottom Image -->
+            <div class="mobile-bottom-image">
+                <img src="robo 3.png" alt="Robot">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
